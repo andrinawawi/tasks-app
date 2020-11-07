@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TodoController::class, 'index'])->name('todos');
-Route::post('/', [TodoController::class, 'store'])->name('store');
-Route::delete('/', [TodoController::class, 'destroy'])->name('destroy');
+Route::get('/', [TaskController::class, 'index'])->name('tasks');
+Route::post('/', [TaskController::class, 'store'])->name('store-task');
+Route::delete('/', [TaskController::class, 'destroy'])->name('destroy-task');

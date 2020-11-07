@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TodoFormRequest extends FormRequest
+class TaskFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,18 @@ class TodoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3'
+            'name' => 'required|min:3',
+            'user' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'nome.required' => 'The todo name is required, dipshit',
-            'nome.min' => 'What kind of activity can be defined with less than 3 characters?'
+            'name.required' => "The task name is required.",
+            'name.min' => "The task name should be at least 3 characters long.",
+            'user.required' => "You should select a user for this task"
+
         ];
     }
 }
