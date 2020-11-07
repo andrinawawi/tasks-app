@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title') To-do list @endsection
+@section('title') Tasks List @endsection
 @section('content')
 
 <form action="{{route('store')}}" method="POST" class="my-2">
@@ -7,9 +7,15 @@
     @csrf
 
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="To-do name" aria-label="To-do name" name="name" id="name">
+        <input type="text" class="form-control" placeholder="Task name" aria-label="Task name" name="name" id="name">
+        <select class="form-select ml-3" placeholder="User" aria-label="User" name="user" id="user">
+            <option selected>User</option>
+            @foreach($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>
+            @endforeach
+        </select>
         <div class="input-group-append">
-            <button class="btn btn-outline-primary ml-3" type="submit">Add To-do</button>
+            <button class="btn btn-outline-primary ml-3" type="submit">Add task</button>
         </div>
     </div>
 

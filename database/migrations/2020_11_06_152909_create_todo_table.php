@@ -16,6 +16,8 @@ class CreateTodoTable extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('name', 100);
+            $table->unsignedSmallInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
