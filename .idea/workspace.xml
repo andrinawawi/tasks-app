@@ -20,14 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92113190-e35e-467f-9203-4b15e1b30922" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/TodoFormRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/TaskFormRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Todo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_06_152909_create_todo_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_06_152909_create_tasks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/todos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_06_152909_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_06_152909_create_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +187,8 @@
       <option name="presentableId" value="Default" />
       <updated>1604705526832</updated>
       <workItem from="1604705528201" duration="854000" />
-      <workItem from="1604773089860" duration="4408000" />
+      <workItem from="1604773089860" duration="5630000" />
+      <workItem from="1604857377953" duration="14131000" />
     </task>
     <servers />
   </component>
@@ -198,11 +205,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="426" y="87" width="494" height="613" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604773627186">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="426" y="87" width="494" height="613" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1366.741@0.27.1366.741" timestamp="1604773627186" />
+    <state x="479" y="322" width="397" height="147" key="NewPhpFileDialog" timestamp="1604863384137">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="479" y="322" width="397" height="147" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1604863384137" />
+    <state x="0" y="27" width="615" height="741" key="find.popup" timestamp="1604863361059">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="0" y="27" width="615" height="741" key="find.popup/0.27.1366.741@0.27.1366.741" timestamp="1604863361059" />
   </component>
 </project>

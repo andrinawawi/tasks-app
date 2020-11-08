@@ -36,16 +36,16 @@
         <hr>
 
         @if(session('added'))
-        <div class="alert alert-success">{{session('added')}}</div>
+        <div class="alert alert-success p-2">{{session('added')}}</div>
         @endif
 
         @if(session('deleted'))
-        <div class="alert alert-info">{{session('deleted')}}</div>
+        <div class="alert alert-info p-2">{{session('deleted')}}</div>
         @endif
 
         @if($errors)
         @foreach($errors->all() as $error)
-        <div class="alert alert-danger">{{$error}}</div>
+        <div class="alert alert-danger p-2">{{$error}}</div>
         @endforeach
         @endif
 

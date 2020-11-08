@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskFormRequest;
-use App\Models\Task;
-use App\Models\User;
+use App\Models\{Task, User};
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -21,12 +20,13 @@ class TaskController extends Controller
     {
         $task = Task::create([
             'name' => $request->get('name'),
-            'user_id' => $request->get('user')
+            'user_id' => $request->get('user'),
+            'dueDate' => $request->get('due-date')
         ]);
 
         return redirect()
             ->route('tasks')
-            ->with("added", "'$task->name' added successfully");
+            ->with("added", "Task: '$task->name' created successfully.");
     }
 
     public function destroy(Request $request)
@@ -38,6 +38,6 @@ class TaskController extends Controller
 
         return redirect()
             ->route('tasks')
-            ->with("deleted", "'$task->name' deleted successfully");
+            ->with("deleted", "Task: '$task->name' deleted successfully.");
     }
 }
