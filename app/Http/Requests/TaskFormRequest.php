@@ -25,7 +25,8 @@ class TaskFormRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3',
-            'user' => 'required'
+            'user' => 'required',
+            'dueDate' => 'required|date'
         ];
     }
 
@@ -34,7 +35,9 @@ class TaskFormRequest extends FormRequest
         return [
             'name.required' => "The task name is required.",
             'name.min' => "The task name should be at least 3 characters long.",
-            'user.required' => "You should select a user for this task"
+            'dueDate.required' => 'The task due date is required.',
+            'dueDate.date' => 'Invalid date format', 
+            'user.required' => "You should select a user for this task."
 
         ];
     }

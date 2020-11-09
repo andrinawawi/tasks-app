@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title') Tasks List @endsection
+@section('title') Tasks @endsection
 @section('content')
 
     <form action="{{route('store-task')}}" method="POST" class="my-2">
@@ -21,7 +21,7 @@
 
             <div class="col-lg-4 my-2">
                 <div class="input-group">
-                    <input class="form-control" type="datetime-local" name="due-date" id="due-date">
+                    <input class="form-control" type="datetime-local" name="dueDate" id="dueDate">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary ml-4" type="submit">Add task</button>
                     </div>

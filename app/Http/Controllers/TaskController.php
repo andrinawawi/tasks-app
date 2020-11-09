@@ -21,7 +21,7 @@ class TaskController extends Controller
         $task = Task::create([
             'name' => $request->get('name'),
             'user_id' => $request->get('user'),
-            'dueDate' => $request->get('due-date')
+            'dueDate' => $request->get('dueDate')
         ]);
 
         return redirect()

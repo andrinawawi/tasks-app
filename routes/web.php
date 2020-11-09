@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TaskController::class, 'index'])->name('tasks');
-Route::post('/', [TaskController::class, 'store'])->name('store-task');
-Route::delete('/', [TaskController::class, 'destroy'])->name('destroy-task');
+Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
+Route::post('/tasks', [TaskController::class, 'store'])->name('store-task');
+Route::delete('/tasks', [TaskController::class, 'destroy'])->name('destroy-task');
+
+Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::post('/users', [UserController::class, 'store'])->name('store-user');
+Route::delete('/users', [UserController::class, 'destroy'])->name('destroy-user');

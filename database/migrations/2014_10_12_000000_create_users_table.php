@@ -25,8 +25,7 @@ class CreateUsersTable extends Migration
                 ->nullable();
             $table->foreign('task_id')
                 ->references('id')
-                ->on('tasks')
-                ->onDelete('cascade');
+                ->on('tasks');
             $table->rememberToken();
             $table->timestamps();
         });

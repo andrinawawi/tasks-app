@@ -21,10 +21,13 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Users</a>
+                        <a class="nav-link {{Request::is('tasks') ? 'active' : ''}}" href="{{route('tasks')}}">Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Settings</a>
+                        <a class="nav-link {{Request::is('users') ? 'active' : ''}}" href="{{route('users')}}">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::is('/settings/*') ? 'active' : ''}}" href="#">Settings</a>
                     </li>
                 </ul>
             </div>
