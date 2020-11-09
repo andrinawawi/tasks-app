@@ -24,7 +24,7 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|min:3|max:40',
+            'username' => 'required|min:3|max:40|alpha_dash',
             'email' => 'required|email',
             'password' => 'required|min:8'
         ];
@@ -36,6 +36,7 @@ class UserFormRequest extends FormRequest
             'username.min' => 'The username should be at least 3 characters long.',
             'username.max' => 'The username shout not have more than 40 characters.',
             'username.required' => 'The username is required.',
+            'username.alpha_dash' => "The username can't have special characters or blank spaces.",
             'email.required' => 'The email is required',
             'password.required' => 'The password is required.'
         ];

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TaskFormRequest extends FormRequest
@@ -23,10 +24,13 @@ class TaskFormRequest extends FormRequest
      */
     public function rules()
     {
+        //5 minutes tolerance to due date
+        $now = Carbon::now()->subMinutes(5);
+
         return [
             'name' => 'required|min:3',
             'user' => 'required',
-            'dueDate' => 'required|date'
+            'dueDate' => "required|date|after_or_equal:$now"
         ];
     }
 
@@ -37,6 +41,7 @@ class TaskFormRequest extends FormRequest
             'name.min' => "The task name should be at least 3 characters long.",
             'dueDate.required' => 'The task due date is required.',
             'dueDate.date' => 'Invalid date format', 
+            'dueDate.after_or_equal' => "The due date can't be earlier than today/now.",
             'user.required' => "You should select a user for this task."
 
         ];
