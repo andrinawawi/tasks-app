@@ -46,6 +46,7 @@
         <div class="alert alert-info p-2">{{session('deleted')}}</div>
         @endif
 
+
         @if($errors)
         @foreach($errors->all() as $error)
         <div class="alert alert-danger p-2">{{$error}}</div>

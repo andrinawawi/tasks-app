@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
 Route::post('/tasks', [TaskController::class, 'store'])->name('store-task');
