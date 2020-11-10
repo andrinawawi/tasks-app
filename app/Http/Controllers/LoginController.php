@@ -10,9 +10,14 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if(! Auth::attempt($request->only('email', 'password')) ){
-            return redirect()->back()->withErrors('Invalid email or password.');
+            return redirect()
+            ->back()
+            ->withErrors('Invalid email or password.')
+            ->withInput();
         }
 
-        return redirect()->route('tasks')->with(['added' => 'Welcome {User}']);
+        $username = Auth::user()->name;
+
+        return redirect()->route('tasks')->with(['added' => "Welcome, $username!"]);
     }
 }

@@ -20,6 +20,6 @@ class Task extends Model
     public function getFormatedDueDate()
     {
          $dueDate = $this->attributes['dueDate'];
-         return Carbon::parse($dueDate)->format('d/m/Y @ h:i');
+         return Carbon::parse($dueDate)->format('d/m/Y @ H:i');
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,9 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('tasks');
+});
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect()->route('login');
+})->name('logout');
 
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');

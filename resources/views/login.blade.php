@@ -8,7 +8,7 @@
         <div class="form-group col-lg-6 p-auto mx-auto my-2">
             <div class="input-group">
                 <span class="input-group-text" id="addon-wrapping">@</span>
-                <input type="text" value="{{old('email')}}" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping" name="email">
+                <input type="email" value="{{old('email')}}" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping" name="email">
             </div>
         </div>
     </div>
