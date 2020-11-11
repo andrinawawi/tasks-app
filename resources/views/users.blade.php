@@ -1,8 +1,9 @@
-@extends('layout')
+@extends('template.layout')
 @section('title') Users @endsection
 @section('content')
+@include('template.alerts')
 
-<form action="{{route('store-user')}}" method="POST" class="my-2">
+<form action="{{route('store-user')}}" method="POST" class="my-3">
     @csrf
     <div class="row">
         <div class="col-lg-3 my-2">
@@ -26,7 +27,9 @@
     
 </form>
 
-<ul class="list-group my-3">
+<hr>
+
+<ul class="list-group my-4">
 
     @foreach($users as $user)
 

@@ -31,7 +31,7 @@ class TaskController extends Controller
 
         return redirect()
             ->route('tasks')
-            ->with("added", "Task: '$task->name' created successfully.");
+            ->with("task-added", "'$task->name' created successfully.");
     }
 
     public function destroy(Request $request)
@@ -43,6 +43,6 @@ class TaskController extends Controller
 
         return redirect()
             ->route('tasks')
-            ->with("deleted", "Task: '$task->name' deleted successfully.");
+            ->with("task-deleted", "'$task->name' deleted successfully.");
     }
 }

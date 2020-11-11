@@ -1,8 +1,9 @@
-@extends('layout')
+@extends('template.layout')
 @section('title') Tasks @endsection
 @section('content')
+@include('template.alerts')
 
-<form action="{{route('store-task')}}" method="POST" class="my-2">
+<form action="{{route('store-task')}}" method="POST" class="my-3">
     @csrf
     <div class="row">
 
@@ -40,7 +41,9 @@
     </div>
 </form>
 
-<ul class="list-group my-3">
+<hr>
+
+<ul class="list-group my-4">
 
     @foreach($tasks as $task)
 
@@ -65,5 +68,6 @@
     </li>
     @endforeach
 </ul>
+
 
 @endsection

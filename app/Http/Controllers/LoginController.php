@@ -9,15 +9,33 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        if(! Auth::attempt($request->only('email', 'password')) ){
-            return redirect()
-            ->back()
-            ->withErrors('Invalid email or password.')
-            ->withInput();
+        // If input was not an email, try to authenticate using username
+        if (filter_var($request->login, FILTER_VALIDATE_EMAIL)) {
+            Auth::attempt([
+                'email' => $request->login,
+                'password' => $request->password
+            ]);
+        } else {
+            Auth::attempt([
+                'name' => $request->login,
+                'password' => $request->password
+            ]);
         }
 
-        $username = Auth::user()->name;
+        // If Auth == True return to Tasks Page
+        if (Auth::check()) {
 
-        return redirect()->route('tasks')->with(['added' => "Welcome, $username!"]);
+            $username = Auth::user()->name;
+
+            return redirect()
+                ->route('tasks')
+                ->with("successful-login", "Welcome, $username!");
+        }
+
+        // If Auth everything fails...
+        return redirect()
+            ->back()
+            ->with("failed-login","Invalid Password or Username/Email")
+            ->withInput();
     }
 }
