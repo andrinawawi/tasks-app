@@ -32,8 +32,9 @@ Route::get('/login', function () {
     }
 })->name('login');
 
+
 Route::post('/login', [LoginController::class, 'login'])
-    ->name('login');
+    ->name('login-submit');
 
 Route::get('/logout', function () {
     Auth::logout();

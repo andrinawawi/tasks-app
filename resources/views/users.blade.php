@@ -1,5 +1,5 @@
 @extends('template.layout')
-@section('title') Users @endsection
+@section('title') {{config('app.name')}} : Users @endsection
 @section('content')
 @include('template.alerts')
 

@@ -1,5 +1,6 @@
 @extends('template.layout')
-@section('title') {{env('APP_NAME')}} : Login @endsection
+@section('title') {{config('app.name')}} : Login @endsection
+
 @section('login-form')
 
 <div class="container h-100">
@@ -7,10 +8,10 @@
     <div class="row h-100 align-items-center">
         <div class="m-auto">
 
-            <h1 class="text-center display-6"> <strong>{{env('APP_NAME')}} </strong> : Login </h2>
+            <h1 class="text-center display-6"> <strong>{{config('app.name')}} </strong> : Login </h2>
                 <hr class="m-3">
 
-                <form method="POST">
+                <form method="POST" action="{{route('login-submit')}}">
 
                     @csrf
 

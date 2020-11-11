@@ -1,5 +1,5 @@
 @extends('template.layout')
-@section('title') Tasks @endsection
+@section('title') {{config('app.name')}} : Tasks @endsection
 @section('content')
 @include('template.alerts')
 
