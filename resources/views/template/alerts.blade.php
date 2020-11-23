@@ -1,7 +1,7 @@
 @if(session('task-added'))
-<div class="alert alert-success p-2 my-4 d-flex align-items-center">
+<div class="alert alert-primary p-2 my-4 d-flex align-items-center">
     <svg class="bi mx-2 my-auto" width="24" height="24" fill="currentColor">
-        <use xlink:href="dist/icons/bootstrap-icons.svg#calendar-check" />
+        <use xlink:href="dist/icons/bootstrap-icons.svg#calendar-plus" />
     </svg> {{session('task-added')}}</div>
 @endif
 
@@ -11,6 +11,14 @@
         <use xlink:href="dist/icons/bootstrap-icons.svg#calendar-x" />
     </svg>
 {{session('task-deleted')}}</div>
+@endif
+
+@if(session('task-finished'))
+<div class="alert alert-success p-2 my-4 d-flex align-items-center">
+<svg class="bi mx-2" width="24" height="24" fill="currentColor">
+        <use xlink:href="dist/icons/bootstrap-icons.svg#calendar-check" />
+    </svg>
+{{session('task-finished')}}</div>
 @endif
 
 @if(session('failed-login'))

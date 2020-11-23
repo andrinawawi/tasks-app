@@ -51,6 +51,8 @@ Route::get('/', function () {
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
 Route::post('/tasks', [TaskController::class, 'store'])->name('store-task');
 Route::delete('/tasks', [TaskController::class, 'destroy'])->name('destroy-task');
+Route::put('/tasks', [TaskController::class, 'finish'])->name('finish-task');
+
 
 Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::post('/users', [UserController::class, 'store'])->name('store-user');

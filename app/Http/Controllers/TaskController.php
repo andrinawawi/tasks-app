@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskFormRequest;
 use App\Models\{Task, User};
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -15,7 +16,7 @@ class TaskController extends Controller
 
     public function index(Request $request)
     {
-        $tasks = Task::query()->orderBy('name')->get();
+        $tasks = Task::where('finishedOn', null)->orderBy('name')->get();
         $users = User::query()->orderBy('name')->get();
 
         return view('tasks', compact('tasks', 'users'));
@@ -36,13 +37,23 @@ class TaskController extends Controller
 
     public function destroy(Request $request)
     {
-        $task = Task::where('id', $request->id)
-            ->first();
+        $task = Task::where('id', $request->id)->first();
 
         Task::destroy($request->id);
 
         return redirect()
             ->route('tasks')
             ->with("task-deleted", "'$task->name' deleted successfully.");
+    }
+
+    public function finish(Request $request)
+    {
+        $task = Task::find($request->id);
+        $task->finishedOn = Carbon::now();
+        $task->save();
+
+        return redirect()
+            ->route('tasks')
+            ->with('task-finished', "'$task->name' finished successfully.");
     }
 }

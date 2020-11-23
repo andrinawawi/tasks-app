@@ -47,21 +47,46 @@
 
     @foreach($tasks as $task)
 
-    <li class="list-group-item ">
-        <div class="row d-flex align-items-center">
+    <li class="list-group-item">
+        <div class="row d-flex align-items-center p-1">
 
             <div class="col-lg-6">
-                <strong> @php echo ucfirst($task->user->name) @endphp</strong> : {{$task->name}}
+                <div class="row">
+                    <span class="col-12"><strong> @php echo ucfirst($task->user->name) @endphp</strong> :</span>
+                </div>
+
+                <div class="row">
+                    <span class="col-12"> {{$task->name}} </span>
+                </div>
+
             </div>
 
             <div class="col-lg-6">
-                <form class="float-right" action="{{route('destroy-task')}}" method="POST" onsubmit="return confirm('Are you sure?')">
-                    @method('DELETE')
-                    @csrf
-                    <input type="hidden" value="{{$task->id}}" name="id">
-                    <span class="mr-2"> <i> (Due on {{$task->getFormatedDueDate()}}) </i></span>
-                    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                </form>
+
+                <div class="row text-right mb-2">
+                    <span> <i> (Due on {{$task->getFormatedDueDate()}}) </i></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        <form class="mx-2" action="{{route('finish-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to finish this task?')">
+                            @method('PUT')
+                            @csrf
+                            <input type="hidden" value="{{$task->id}}" name="id">
+
+                            <button class="btn btn-success btn-sm" type="submit">Finish</button>
+                        </form>
+
+                        <form action="{{route('destroy-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
+                            @method('DELETE')
+                            @csrf
+                            <input type="hidden" value="{{$task->id}}" name="id">
+                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                    </div>
+
+
+                </div>
             </div>
 
         </div>
