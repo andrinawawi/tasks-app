@@ -43,6 +43,62 @@
 
 <hr>
 
+<div class="row">
+    <div class="accordion" id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link link-dark btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Search
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <form action="{{route('search-task')}}" method="post">
+                        <div class="row">
+
+                            <div class="col-lg-2 my-2">
+                                <select class="form-select" aria-label="User" name="user" id="user">
+
+                                    @if(empty(old('user')))
+                                    <option disabled selected>Select user</option>
+                                    @endif
+
+                                    @foreach($users as $user)
+                                    @if(old('user') == $user->id)
+                                    <option selected value="{{$user->id}}"> {{$user->name}} </option>
+                                    @else
+                                    <option value="{{$user->id}}"> {{$user->name}} </option>
+                                    @endif
+                                    @endforeach
+
+                                </select>
+                            </div>
+
+                            <div class="col-lg-6 my-2">
+                                <input type="text" class="form-control" placeholder="Task name" aria-label="Task name" name="name" value="{{old('name')}}" id="name">
+                            </div>
+
+                            <div class="col-lg-4 my-2">
+                                <div class="input-group">
+                                    <input class="form-control" type="datetime-local" name="dueDate" id="dueDate" value="{{old('dueDate')}}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary ml-4" type="submit">Add task</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <ul class="list-group my-4">
 
     @foreach($tasks as $task)
@@ -94,5 +150,10 @@
     @endforeach
 </ul>
 
+<div class="row">
+    <div class="d-flex justify-content-center">
+        {{ $tasks->links() }}
+    </div>
+</div>
 
 @endsection

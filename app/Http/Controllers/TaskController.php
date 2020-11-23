@@ -16,7 +16,7 @@ class TaskController extends Controller
 
     public function index(Request $request)
     {
-        $tasks = Task::where('finishedOn', null)->orderBy('name')->get();
+        $tasks = Task::where('finishedOn', null)->orderBy('name')->simplePaginate(10);
         $users = User::query()->orderBy('name')->get();
 
         return view('tasks', compact('tasks', 'users'));
@@ -44,6 +44,15 @@ class TaskController extends Controller
         return redirect()
             ->route('tasks')
             ->with("task-deleted", "'$task->name' deleted successfully.");
+    }
+
+    public function search(Request $request)
+    {
+
+        $tasks = Task::where('finishedOn', null)->orderBy('name')->simplePaginate(10);
+        $users = User::query()->orderBy('name')->get();
+
+        return view('tasks', compact('tasks', 'users'));
     }
 
     public function finish(Request $request)
