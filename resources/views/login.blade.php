@@ -8,7 +8,7 @@
     <div class="row h-100 align-items-center">
         <div class="m-auto">
 
-            <h1 class="text-center display-6"> <strong>{{config('app.name')}} </strong> : Login </h2>
+            <h2 class="text-center display-6"> <strong>{{config('app.name')}} </strong> : Login </h2>
                 <hr class="m-3">
 
                 <form method="POST" action="{{route('login-submit')}}">

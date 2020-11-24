@@ -26,7 +26,7 @@
             <li class="navbar-nav mb-2 mb-lg-0 dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                     <svg class="bi mr-2" width="24" height="24" fill="currentColor">
-                        <use xlink:href="dist/icons/bootstrap-icons.svg#person-circle" />
+                        <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#person-circle')}}" />
                     </svg> {{Auth()->user()->name}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

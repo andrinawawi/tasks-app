@@ -49,7 +49,14 @@ class TaskController extends Controller
     public function search(Request $request)
     {
 
-        $tasks = Task::where('finishedOn', null)->orderBy('name')->simplePaginate(10);
+        $tasks = Task::where('finishedOn', null)
+            ->where('name', 'like', "%$request->taskSearch%")
+            ->when($request->userSearch, function ($tasks) use ($request) {
+                return $tasks->where('user_id', $request->userSearch);
+            })
+            ->simplePaginate(10);
+
+
         $users = User::query()->orderBy('name')->get();
 
         return view('tasks', compact('tasks', 'users'));
