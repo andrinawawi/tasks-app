@@ -16,7 +16,7 @@ class TaskController extends Controller
 
     public function index(Request $request)
     {
-        $tasks = Task::where('finishedOn', null)->orderBy('name')->simplePaginate(10);
+        $tasks = Task::where('finishedOn', null)->orderBy('dueDate')->simplePaginate(10);
         $users = User::query()->orderBy('name')->get();
 
         return view('tasks', compact('tasks', 'users'));
@@ -50,10 +50,15 @@ class TaskController extends Controller
     {
 
         $tasks = Task::where('finishedOn', null)
-            ->where('name', 'like', "%$request->taskSearch%")
+            ->where('tasks.name', 'like', "%$request->taskSearch%")
+            ->join('users', 'users.id', '=', 'tasks.user_id')
             ->when($request->userSearch, function ($tasks) use ($request) {
                 return $tasks->where('user_id', $request->userSearch);
             })
+            ->when($request->dueDateSearch, function ($tasks) use ($request) {
+                return $tasks->whereDate('dueDate', $request->dueDateSearch);
+            })
+            ->orderBy($request->searchOrder)
             ->simplePaginate(10);
 
 
