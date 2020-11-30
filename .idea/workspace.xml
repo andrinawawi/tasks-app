@@ -20,13 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92113190-e35e-467f-9203-4b15e1b30922" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/tasks-search.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/FindTask.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks-search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks-search.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/tasks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/template/alerts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/template/alerts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/template/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/template/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/template/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/template/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +181,9 @@
       <workItem from="1604705528201" duration="854000" />
       <workItem from="1604773089860" duration="5630000" />
       <workItem from="1604857377953" duration="14440000" />
-      <workItem from="1606176968756" duration="8341000" />
+      <workItem from="1606176968756" duration="8513000" />
+      <workItem from="1606577489984" duration="2399000" />
+      <workItem from="1606759359781" duration="14140000" />
     </task>
     <servers />
   </component>
@@ -206,6 +207,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="426" y="87" width="494" height="613" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1366.741@0.27.1366.741" timestamp="1604773627186" />
+    <state x="406" y="113" width="543" height="564" key="NewPhpClassDialog" timestamp="1606769123453">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="406" y="113" width="543" height="564" key="NewPhpClassDialog/0.27.1366.741@0.27.1366.741" timestamp="1606769123453" />
     <state x="479" y="322" width="397" height="147" key="NewPhpFileDialog" timestamp="1604863384137">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -214,5 +219,9 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="0" y="27" width="615" height="741" key="find.popup/0.27.1366.741@0.27.1366.741" timestamp="1604863361059" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1606766338605">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1606766338605" />
   </component>
 </project>

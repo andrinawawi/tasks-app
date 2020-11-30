@@ -4,71 +4,123 @@
 
         <div class="card">
 
-            <div class="card-header" id="headingOne">
+            <div class="card-header" id="heading-search">
                 <h2 class="mb-0">
-                    <button class="btn btn-link link-dark btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Search
+                    <button class="btn btn-link d-flex align-items-center justify-content-between link-dark btn-block"
+                            type="button"
+                            data-toggle="collapse" data-target="#collapse-search" aria-expanded="true"
+                            aria-controls="collapse-search">
+
+                        <span class="d-flex align-items-center">
+                            <svg class="bi mr-2" width="1em" height="1em" fill="currentColor">
+                                <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#search')}}"/>
+                            </svg>
+                            Search
+                        </span>
+
+                        <svg class="bi mr-2" width="1em" height="1em" fill="currentColor">
+                            <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#chevron-down')}}"/>
+                        </svg>
                     </button>
                 </h2>
             </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapse-search" class="collapse {{$collapseShow ?? ''}}" aria-labelledby="heading-search"
+                 data-parent="#accordion">
                 <div class="card-body">
 
-                    <form class="row" method="GET" action="{{route('search-task')}}">
+                    <form method="GET" action="{{route('search-task')}}">
 
-                        <div class="form-group mb-4 col-lg-3">
-                            <label for="userSearch">User</label>
-                            <select class="form-select" aria-label="User" name="userSearch" id="userSearch">
-                                <option disabled selected>Select user</option>
-                                @foreach($users as $user)
-                                <option value="{{$user->id}}"> {{$user->name}} </option>
-                                @endforeach
-                            </select>
+                        <div class="row">
+                            <div class="form-group col-lg-3">
+                                <label for="userSearch">User</label>
+                                <select class="form-select mb-4" aria-label="User" name="userSearch" id="userSearch">
+
+                                    <option @if( isset($oldRequest) && $oldRequest->userSearch == '')
+                                            {{'selected'}}
+                                            @endif value="">All users
+                                    </option>
+
+                                    @foreach($users as $user)
+                                        <option
+                                            @if( isset($oldRequest) && $oldRequest->userSearch == $user->id)
+                                            {{'selected'}}
+                                            @endif value="{{$user->id}}"> {{$user->name}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label for="taskSearch">Task name</label>
+                                <input value="{{ $oldRequest->taskSearch ?? ''}}" type="text" name="taskSearch"
+                                       class="form-control mb-4" id="taskSearch">
+                            </div>
+
+                            <div class="form-group col-lg-3">
+                                <label for="dueDateSearch">Due date</label>
+                                <input value="{{ $oldRequest->dueDateSearch ?? ''}}" type="date" name="dueDateSearch"
+                                       class="form-control mb-4" id="dueDateSearch">
+                            </div>
                         </div>
 
-                        <div class="form-group mb-4 col-lg-6">
-                            <label for="taskSearch">Task name</label>
-                            <input type="text" name="taskSearch" class="form-control" id="taskSearch">
-                        </div>
-
-                        <div class="form-group mb-4 col-lg-3">
-                            <label for="dueDateSearch">Due date</label>
-                            <input type="date" name="dueDateSearch" class="form-control" id="dueDateSearch">
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center">
-
-
-                            <div>
+                        <div class="row mb-4">
+                            <div class="d-flex align-items-center">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="searchOrder" id="inlineRadio2" value="users.name">
+                                    <input class="form-check-input" type="radio" name="searchOrder"
+                                           id="inlineRadio2"
+                                           value="userName"
+                                    @if( isset($oldRequest) && $oldRequest->searchOrder == 'userName')
+                                        {{'checked'}}
+                                        @endif >
                                     <label class="form-check-label" for="inlineRadio2">Order by User</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="searchOrder" id="inlineRadio1" value="dueDate">
+                                    <input class="form-check-input" type="radio" name="searchOrder"
+                                           id="inlineRadio1"
+                                           value="dueDate"
+                                    @if( isset($oldRequest) && $oldRequest->searchOrder == 'dueDate')
+                                        {{'checked'}}
+                                        @endif >
                                     <label class="form-check-label" for="inlineRadio1">Order by Due date</label>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="d-flex float-right">
+                        <div class="row d-flex align-items-center">
 
-                                <a class="btn btn-sm btn-outline-dark d-flex align-items-center mr-2" href="{{route('tasks')}}">
-                                    <svg class="bi mx-1" width="1em" height="1em" fill="currentColor">
-                                        <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#arrow-clockwise')}}" />
-                                    </svg>
-                                </a>
+                            <div class="col-md-9">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="finished" name="finished"
+                                    @if( isset($oldRequest) && $oldRequest->finished == 'on')
+                                        {{'checked'}}
+                                        @endif >
+                                    <label for="finished">Show finished tasks</label>
+                                </div>
+                            </div>
 
-                                <button class="btn btn-sm btn-outline-primary d-flex align-items-center">
-                                    <svg class="bi mr-2" width="1em" height="1em" fill="currentColor">
-                                        <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#search')}}" />
-                                    </svg>
-                                    Search
-                                </button>
+                            <div class="col-md-3">
+                                <div class="d-flex float-right mt-4 mt-sm-0">
+                                    <a class="btn btn-sm btn-outline-dark d-flex align-items-center mr-2"
+                                       href="{{route('tasks')}}">
+                                        <svg class="bi mx-1" width="1em" height="1em" fill="currentColor">
+                                            <use
+                                                xlink:href="{{asset('dist/icons/bootstrap-icons.svg#arrow-clockwise')}}"/>
+                                        </svg>
+                                    </a>
+
+                                    <button class="btn btn-sm btn-outline-primary d-flex align-items-center">
+                                        <svg class="bi mr-2" width="1em" height="1em" fill="currentColor">
+                                            <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#search')}}"/>
+                                        </svg>
+                                        Search
+                                    </button>
+                                </div>
                             </div>
 
                         </div>
+
+
                     </form>
                 </div>
             </div>

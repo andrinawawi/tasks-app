@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskFormRequest;
+use App\Services\FindTask;
 use App\Models\{Task, User};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         $tasks = Task::where('finishedOn', null)->orderBy('dueDate')->simplePaginate(10);
-        $users = User::query()->orderBy('name')->get();
+        $users = User::query()->get()->sortBy('name', SORT_FLAG_CASE|SORT_NATURAL);
 
         return view('tasks', compact('tasks', 'users'));
     }
@@ -48,23 +49,15 @@ class TaskController extends Controller
 
     public function search(Request $request)
     {
+        $tasks = FindTask::find($request);
+        $users = User::query()->get()->sortBy('name', SORT_FLAG_CASE|SORT_NATURAL);
 
-        $tasks = Task::where('finishedOn', null)
-            ->where('tasks.name', 'like', "%$request->taskSearch%")
-            ->join('users', 'users.id', '=', 'tasks.user_id')
-            ->when($request->userSearch, function ($tasks) use ($request) {
-                return $tasks->where('user_id', $request->userSearch);
-            })
-            ->when($request->dueDateSearch, function ($tasks) use ($request) {
-                return $tasks->whereDate('dueDate', $request->dueDateSearch);
-            })
-            ->orderBy($request->searchOrder)
-            ->simplePaginate(10);
-
-
-        $users = User::query()->orderBy('name')->get();
-
-        return view('tasks', compact('tasks', 'users'));
+        return view('tasks')->with([
+            'tasks' => $tasks,
+            'users' => $users,
+            'collapseShow' => 'show',
+            'oldRequest' => $request
+        ]);
     }
 
     public function finish(Request $request)
