@@ -2,6 +2,7 @@
 @section('title') {{config('app.name')}} : Tasks @endsection
 @section('content')
 @include('template.alerts')
+@include('task-edit')
 
 <form action="{{route('store-task')}}" method="POST" class="my-4">
     @csrf
@@ -71,13 +72,15 @@
 
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end">
-                        <form class="mx-2" action="{{route('finish-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to finish this task?')">
+                        <form class="mr-2" action="{{route('finish-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to finish this task?')">
                             @method('PUT')
                             @csrf
                             <input type="hidden" value="{{$task->id}}" name="id">
 
                             <button class="btn btn-success btn-sm" type="submit">Finish</button>
                         </form>
+
+                        <a class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#editModal" data-task="{{$task->name}}" data-date="{{$task->dueDate}}">Edit</a>
 
                         <form action="{{route('destroy-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
                             @method('DELETE')
@@ -101,5 +104,27 @@
         {{ $tasks->links() }}
     </div>
 </div>
+
+<script>
+    var editModal = document.getElementById('editModal')
+
+    editModal.addEventListener('show.bs.modal', function(event) {
+
+        // Button that triggered the modal
+        var button = event.relatedTarget
+
+        var task = button.getAttribute('data-task')
+        var date = button.getAttribute('data-date')
+        // var user = button.getAttribute('data-user')
+
+        // Update the modal's content.
+        var taskName = editModal.querySelector('.modal-body #taskName')
+        taskName.value = task
+
+        var dueDate = editModal.querySelector('.modal-body #dueDate')
+        dueDate.value = date
+    })
+</script>
+
 
 @endsection
