@@ -38,6 +38,7 @@ Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
 Route::get('/tasks/search', [TaskController::class, 'search'])->name('search-task');
 Route::post('/tasks', [TaskController::class, 'store'])->name('store-task');
 Route::delete('/tasks', [TaskController::class, 'destroy'])->name('destroy-task');
+Route::patch('/tasks', [TaskController::class, 'update'])->name('update-task');
 Route::put('/tasks', [TaskController::class, 'finish'])->name('finish-task');
 
 Route::get('/reports', [ReportController::class, 'index'])->name('reports');

@@ -27,12 +27,12 @@
         </div>
 
         <div class="col-lg-6 my-2">
-            <input type="text" class="form-control" placeholder="Task name" aria-label="Task name" name="name" value="{{old('name')}}" id="name">
+            <input type="text" class="form-control" placeholder="Task name" aria-label="Task name" name="name" value="{{old('name')}}" id="name" required>
         </div>
 
         <div class="col-lg-4 my-2">
             <div class="input-group">
-                <input class="form-control" type="datetime-local" name="dueDate" id="dueDate" value="{{old('dueDate')}}">
+                <input class="form-control" type="datetime-local" name="dueDate" id="dueDate" value="{{old('dueDate')}}" required>
                 <div class="input-group-append">
                     <button class="btn btn-outline-primary ml-4" type="submit">Add task</button>
                 </div>
@@ -80,7 +80,7 @@
                             <button class="btn btn-success btn-sm" type="submit">Finish</button>
                         </form>
 
-                        <a class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#editModal" data-task="{{$task->name}}" data-date="{{$task->dueDate}}">Edit</a>
+                        <a class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#editModal" data-task="{{$task->name}}" data-date="{{$task->dueDate}}" data-user="{{$task->user->id}}" data-taskId="{{$task->id}}">Edit</a>
 
                         <form action="{{route('destroy-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
                             @method('DELETE')
@@ -105,24 +105,40 @@
     </div>
 </div>
 
+@if(isset($updateError))
+    <script>
+        var editModal = document.getElementById('editModal')
+        editModal.show();
+    </script>
+@endif
+
+
+
 <script>
+    
     var editModal = document.getElementById('editModal')
 
     editModal.addEventListener('show.bs.modal', function(event) {
 
-        // Button that triggered the modal
-        var button = event.relatedTarget
+        let button = event.relatedTarget
 
-        var task = button.getAttribute('data-task')
-        var date = button.getAttribute('data-date')
-        // var user = button.getAttribute('data-user')
+        let user = button.getAttribute('data-user')
+        let userSelect = editModal.querySelector('.modal-body .form-select')
 
-        // Update the modal's content.
-        var taskName = editModal.querySelector('.modal-body #taskName')
-        taskName.value = task
+        for (i = 0; i < userSelect.length; i++) {
+            if (userSelect.options[i].value == user) {
+                userSelect[i].setAttribute('selected', 'selected')
+            }
+        }
 
-        var dueDate = editModal.querySelector('.modal-body #dueDate')
-        dueDate.value = date
+        let id = editModal.querySelector('.modal-body .id')
+        id.value = button.getAttribute('data-taskId')
+
+        let taskName = editModal.querySelector('.modal-body #updName')
+        taskName.value = button.getAttribute('data-task')
+
+        let dueDate = editModal.querySelector('.modal-body #updDueDate')
+        dueDate.value = button.getAttribute('data-date')
     })
 </script>
 

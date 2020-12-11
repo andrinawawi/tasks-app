@@ -5,6 +5,14 @@
     </svg> {{session('task-added')}}</div>
 @endif
 
+@if(session('task-updated'))
+<div class="alert alert-success p-2 my-4 d-flex align-items-center">
+<svg class="bi mx-2" width="24" height="24" fill="currentColor">
+        <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#arrow-repeat')}}" />
+    </svg>
+{{session('task-updated')}}</div>
+@endif
+
 @if(session('task-deleted'))
 <div class="alert alert-dark p-2 my-4 d-flex align-items-center">
 <svg class="bi mx-2" width="24" height="24" fill="currentColor">
