@@ -11,6 +11,10 @@
  - Various Task search filters 
  - Reports (To be implemented.)
 
+## Screenshots:
+
+![Alt text](screenshots.jpg?raw=true "App screenshots")
+
 ## Requirements:
 
 Soon...
