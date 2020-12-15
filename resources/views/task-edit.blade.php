@@ -16,18 +16,19 @@
                     @method('PATCH')
                     <div class="form-group mb-3">
                         <label for="updName">Task name</label>
-                        <input class="form-control" type="text" name="updName" id="updName" value="{{old('updName')}}" required>
+                        <input class="form-control" type="text" name="updName" id="updName" value="{{old('updName')}}"
+                               required>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="updUser">User</label>
                         <select class="form-select" aria-label="User" name="updUser" id="updUser" required>
                             @foreach($users as $user)
-                            @if(old('upduser') == $user->id)
-                            <option selected value="{{$user->id}}"> {{$user->name}} </option>
-                            @else
-                            <option value="{{$user->id}}"> {{$user->name}} </option>
-                            @endif
+                                @if(old('upduser') == $user->id)
+                                    <option selected value="{{$user->id}}"> {{$user->name}} </option>
+                                @else
+                                    <option value="{{$user->id}}"> {{$user->name}} </option>
+                                @endif
                             @endforeach
 
                         </select>
@@ -35,18 +36,22 @@
 
                     <div class="form-group mb-3">
                         <label for="updDueDate">Due Date</label>
-                        <input class="form-control" type="datetime-local" name="updDueDate" id="updDueDate" value="{{old('updDueDate')}}" required>
+                        <input class="form-control" type="datetime-local" name="updDueDate" id="updDueDate"
+                               value="{{old('updDueDate')}}" required>
                     </div>
 
                     <input type="hidden" class="id" name="id" value="{{old('id')}}">
 
-            </div>
-            <div class="modal-footer">
+                    <div class="modal-footer pr-0">
 
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+
             </div>
-            </form>
+
+
         </div>
     </div>
 </div>

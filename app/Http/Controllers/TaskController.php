@@ -78,18 +78,18 @@ class TaskController extends Controller
         $now = Carbon::now()->subMinutes(5);
 
         $rules = [
-            'name' => 'required|min:3',
-            'user' => 'required',
-            'dueDate' => "required|date|after_or_equal:$now"
+            'updName' => 'required|min:3',
+            'updUser' => 'required',
+            'updDueDate' => "required|date|after_or_equal:$now"
         ];
 
         $messages = [
-            'name.required' => "The task name is required.",
-            'name.min' => "The task name should be at least 3 characters long.",
-            'dueDate.required' => 'The task due date is required.',
-            'dueDate.date' => 'Invalid date format',
-            'dueDate.after_or_equal' => "The due date can't be earlier than today/now.",
-            'user.required' => "You should select a user for this task."
+            'updName.required' => "The task name is required.",
+            'updName.min' => "The task name should be at least 3 characters long.",
+            'updDueDate.required' => 'The task due date is required.',
+            'updDueDate.date' => 'Invalid date format',
+            'updDueDate.after_or_equal' => "The due date can't be earlier than today/now.",
+            'updUser.required' => "You should select a user for this task."
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -97,18 +97,19 @@ class TaskController extends Controller
         if ($validator->fails()) {
             return redirect()
                 ->route('tasks')
+                ->with('update-failed', true)
                 ->withErrors($validator)
-                ->withInput()
-                ->with('updateError', 'true');
+                ->withInput();
+
         }
 
         $task = Task::find($request->id);
 
         $oldTaskName = $task->name;
 
-        $task->name = $request->taskName;
-        $task->user_id = $request->user;
-        $task->dueDate = $request->dueDate;
+        $task->name = $request->updName;
+        $task->user_id = $request->updUser;
+        $task->dueDate = $request->updDueDate;
         $task->save();
 
         return redirect()
