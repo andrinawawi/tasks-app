@@ -6,19 +6,19 @@
 
             <div class="card-header" id="heading-search">
                 <h2 class="mb-0">
-                    <button class="btn btn-link d-flex align-items-center justify-content-between link-dark btn-block"
+                    <button class="btn btn-link w-100 d-flex justify-content-between align-items-center link-dark btn-block"
                             type="button"
-                            data-toggle="collapse" data-target="#collapse-search" aria-expanded="true"
+                            data-bs-toggle="collapse" data-bs-target="#collapse-search" aria-expanded="true"
                             aria-controls="collapse-search">
 
                         <span class="d-flex align-items-center">
-                            <svg class="bi mr-2" width="1em" height="1em" fill="currentColor">
+                            <svg class="bi me-2" width="1em" height="1em" fill="currentColor">
                                 <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#search')}}"/>
                             </svg>
                             Search
                         </span>
 
-                        <svg class="bi mr-2" width="1em" height="1em" fill="currentColor">
+                        <svg class="bi" width="1em" height="1em" fill="currentColor">
                             <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#chevron-down')}}"/>
                         </svg>
                     </button>
@@ -26,7 +26,7 @@
             </div>
 
             <div id="collapse-search" class="collapse {{$collapseShow ?? ''}}" aria-labelledby="heading-search"
-                 data-parent="#accordion">
+                 data-bs-parent="#accordion">
                 <div class="card-body">
 
                     <form method="GET" action="{{route('search-task')}}">
@@ -100,8 +100,8 @@
                             </div>
 
                             <div class="col-md-3">
-                                <div class="d-flex float-right mt-4 mt-sm-0">
-                                    <a class="btn btn-sm btn-outline-dark d-flex align-items-center mr-2"
+                                <div class="d-flex float-end mt-4 mt-sm-0">
+                                    <a class="btn btn-sm btn-outline-dark d-flex align-items-center me-2"
                                        href="{{route('tasks')}}">
                                         <svg class="bi mx-1" width="1em" height="1em" fill="currentColor">
                                             <use
@@ -110,7 +110,7 @@
                                     </a>
 
                                     <button class="btn btn-sm btn-outline-primary d-flex align-items-center">
-                                        <svg class="bi mr-2" width="1em" height="1em" fill="currentColor">
+                                        <svg class="bi me-2" width="1em" height="1em" fill="currentColor">
                                             <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#search')}}"/>
                                         </svg>
                                         Search

@@ -18,7 +18,7 @@
             <div class="input-group">
                 <input class="form-control" value="{{old('username')}}" type="password" name="password" id="password" placeholder="Password">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-primary ml-4" type="submit">Add user</button>
+                    <button class="btn btn-outline-primary ms-4" type="submit">Add user</button>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="col-lg-6">
-                <form class="float-right" action="{{route('destroy-user')}}" method="POST" onsubmit="return confirm('This action will also delete the tasks associated to this user. \nAre you sure?')">
+                <form class="float-end" action="{{route('destroy-user')}}" method="POST" onsubmit="return confirm('This action will also delete the tasks associated to this user. \nAre you sure?')">
                     @method('DELETE')
                     @csrf
                     <input type="hidden" value="{{$user->id}}" name="id">

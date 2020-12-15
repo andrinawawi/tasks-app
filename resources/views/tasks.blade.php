@@ -36,7 +36,7 @@
                     <input class="form-control" type="datetime-local" name="dueDate" id="dueDate"
                            value="{{old('dueDate')}}" required>
                     <div class="input-group-append">
-                        <button class="btn btn-outline-primary ml-4" type="submit">Add task</button>
+                        <button class="btn btn-outline-primary ms-4" type="submit">Add task</button>
                     </div>
                 </div>
             </div>
@@ -68,13 +68,13 @@
 
                     <div class="col-lg-6">
 
-                        <div class="row text-right mb-2">
+                        <div class="row text-end mb-2">
                             <span> <i> (Due on {{$task->getFormatedDueDate()}}) </i></span>
                         </div>
 
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
-                                <form class="mr-2" action="{{route('finish-task')}}" method="POST"
+                                <form class="me-2" action="{{route('finish-task')}}" method="POST"
                                       onsubmit="return confirm('Are you sure you want to finish this task?')">
                                     @method('PUT')
                                     @csrf
@@ -83,8 +83,8 @@
                                     <button class="btn btn-success btn-sm" type="submit">Finish</button>
                                 </form>
 
-                                <a class="btn btn-primary btn-sm mr-2" id="edit-btn" data-toggle="modal"
-                                   data-target="#editModal"
+                                <a class="btn btn-primary btn-sm me-2" data-bs-toggle="modal"
+                                   data-bs-target="#editModal"
                                    data-task="{{$task->name}}" data-date="{{$task->dueDate}}"
                                    data-user="{{$task->user->id}}" data-taskId="{{$task->id}}">Edit</a>
 

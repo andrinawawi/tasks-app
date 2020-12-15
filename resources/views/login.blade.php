@@ -32,7 +32,7 @@
                             <div class="input-group">
                                 <input type="password" value="{{old('password')}}" name="password" id="password" placeholder="Password" required min="1" class="form-control shadow">
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn btn-outline-primary shadow ml-3">
+                                    <button type="submit" class="btn btn-outline-primary shadow ms-3">
                                         Login
                                     </button>
                                 </div>
