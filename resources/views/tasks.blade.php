@@ -105,10 +105,36 @@
     </div>
 </div>
 
+<script>
+    //Functions used to load edit modal on page-load and close it as desired
+    function openModal() {
+        document.body.classList.add('modal-open')
 
+        let editModal = document.getElementById('editModal')
+        editModal.classList.add('show')
+
+        let backdrop = document.createElement('DIV')
+        backdrop.classList.add("modal-backdrop", 'fade', 'show')
+        backdrop.setAttribute('id', 'backdrop')
+
+        document.body.appendChild(backdrop)
+        document.getElementById('editModal').style.display = 'block'
+    }
+
+    function closeModal() {
+        document.body.classList.remove('modal-open')
+
+        let editModal = document.getElementById('editModal')
+        editModal.classList.remove('show')
+
+        document.getElementById('backdrop').remove()
+        document.getElementById('editModal').style.display = 'none'
+    }
+</script>
 
 @if(!session('update-failed'))
 <script>
+    // Adds current values to edit modal
     let editModal = document.getElementById('editModal')
 
     editModal.addEventListener('show.bs.modal', function(event) {
@@ -134,23 +160,10 @@
         dueDate.value = button.getAttribute('data-date')
     })
 </script>
+@else
+
+<script> openModal() </script>
 
 @endif
-
-
-<!-- 
-<script>
-    document.body.classList.add('modal-open')
-
-    let editModal = document.getElementById('editModal')
-    editModal.classList.add('show')
-
-    let  backdrop = document.createElement('DIV')
-    backdrop.classList.add("modal-backdrop", 'fade', 'show')
-
-    document.body.appendChild(backdrop)
-    document.getElementById('editModal').style.display = 'block'
-</script> -->
-
 
 @endsection
