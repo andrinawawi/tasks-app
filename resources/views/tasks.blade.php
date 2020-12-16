@@ -1,7 +1,11 @@
 @extends('template.layout')
 @section('title') {{config('app.name')}} : Tasks @endsection
 @section('content')
+
+@if(!session('update-failed'))
 @include('template.alerts')
+@endif
+
 @include('task-edit')
 
 <form action="{{route('store-task')}}" method="POST" class="my-4">
@@ -106,7 +110,7 @@
 </div>
 
 <script>
-    //Functions used to load edit modal on page-load and close it as desired
+    //Functions used to load edit modal on page-load, close it and add edit values
     function openModal() {
         document.body.classList.add('modal-open')
 
@@ -121,48 +125,63 @@
         document.getElementById('editModal').style.display = 'block'
     }
 
-    function closeModal() {
-        document.body.classList.remove('modal-open')
+    function addValuesToModal() {
 
         let editModal = document.getElementById('editModal')
-        editModal.classList.remove('show')
 
-        document.getElementById('backdrop').remove()
-        document.getElementById('editModal').style.display = 'none'
+        editModal.addEventListener('show.bs.modal', function(event) {
+
+            let button = event.relatedTarget
+
+            let user = button.getAttribute('data-user')
+            let userSelect = editModal.querySelector('.modal-body .form-select')
+
+            for (i = 0; i < userSelect.length; i++) {
+                if (userSelect.options[i].value == user) {
+                    userSelect[i].setAttribute('selected', 'selected')
+                }
+            }
+
+            let id = editModal.querySelector('.modal-body .id')
+            id.value = button.getAttribute('data-taskId')
+
+            let taskName = editModal.querySelector('.modal-body #updName')
+            taskName.value = button.getAttribute('data-task')
+
+            let dueDate = editModal.querySelector('.modal-body #updDueDate')
+            dueDate.value = button.getAttribute('data-date')
+        })
     }
 </script>
 
 @if(!session('update-failed'))
 <script>
-    // Adds current values to edit modal
-    let editModal = document.getElementById('editModal')
-
-    editModal.addEventListener('show.bs.modal', function(event) {
-
-        let button = event.relatedTarget
-
-        let user = button.getAttribute('data-user')
-        let userSelect = editModal.querySelector('.modal-body .form-select')
-
-        for (i = 0; i < userSelect.length; i++) {
-            if (userSelect.options[i].value == user) {
-                userSelect[i].setAttribute('selected', 'selected')
-            }
-        }
-
-        let id = editModal.querySelector('.modal-body .id')
-        id.value = button.getAttribute('data-taskId')
-
-        let taskName = editModal.querySelector('.modal-body #updName')
-        taskName.value = button.getAttribute('data-task')
-
-        let dueDate = editModal.querySelector('.modal-body #updDueDate')
-        dueDate.value = button.getAttribute('data-date')
-    })
+    addValuesToModal();
 </script>
 @else
 
-<script> openModal() </script>
+<script>
+    openModal()
+
+    // Reloads page when clicking outside modal
+    let editModal = document.getElementsByClassName('modal-content')[0];
+
+    document.addEventListener('click', function(event) {
+        let editModalClick = editModal.contains(event.target);
+
+        if (!editModalClick) {
+            document.location.reload(false);
+        }
+    });
+
+    document.getElementsByClassName('btn-close')[0].addEventListener('click', function() {
+        document.location.reload(false);
+    }, true)
+
+    document.getElementById('close').addEventListener('click', function() {
+        document.location.reload(false);
+    }, true)
+</script>
 
 @endif
 

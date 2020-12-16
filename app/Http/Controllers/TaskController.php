@@ -96,7 +96,7 @@ class TaskController extends Controller
 
         if ($validator->fails()) {
             return redirect()
-                ->route('tasks')
+                ->back()
                 ->with('update-failed', true)
                 ->withErrors($validator)
                 ->withInput();
