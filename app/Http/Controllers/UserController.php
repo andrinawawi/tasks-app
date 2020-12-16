@@ -24,10 +24,12 @@ class UserController extends Controller
 
     public function store(UserFormRequest $request)
     {
+
         $user = User::create([
             'name' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'isAdminUser' => (bool) $request->isAdmin
         ]);
 
         return redirect()->route('users')

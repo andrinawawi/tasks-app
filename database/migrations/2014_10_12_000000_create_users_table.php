@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('name')
-            ->unique();
+                ->unique();
             $table->string('email')
                 ->unique();
             $table->timestamp('email_verified_at')
@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->unsignedSmallInteger('task_id')
                 ->nullable();
+            $table->boolean('isAdminUser')->default(false);
             $table->foreign('task_id')
                 ->references('id')
                 ->on('tasks');

@@ -59,7 +59,10 @@
 
             <div class="col-lg-6">
                 <div class="row">
-                    <span class="col-12"><strong> @php echo ucfirst($task->user->name) @endphp</strong> :</span>
+                    <span class="col-12"><strong class="{{($task->getFormatedFinishingDate()) ? 'text-success' : ''}}"> @php echo ucfirst($task->user->name) @endphp</strong> :
+                        @if(!empty($task->getFormatedFinishingDate()))
+                        <i class="text-success">Finished on {{$task->getFormatedFinishingDate()}}</i>
+                        @endif</span>
                 </div>
 
                 <div class="row">
@@ -76,6 +79,7 @@
 
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end">
+                        @if(!$task->getFormatedFinishingDate())
                         <form class="me-2" action="{{route('finish-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to finish this task?')">
                             @method('PUT')
                             @csrf
@@ -85,7 +89,7 @@
                         </form>
 
                         <button type="button" class="btn btn-primary btn-sm me-2" id="editBtn" data-bs-toggle="modal" data-bs-target="#editModal" data-task="{{$task->name}}" data-date="{{$task->dueDate}}" data-user="{{$task->user->id}}" data-taskId="{{$task->id}}">Edit</button>
-
+                        @endif()
                         <form action="{{route('destroy-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
                             @method('DELETE')
                             @csrf

@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             $user->name = config('admin.admin_name');
             $user->email = config('admin.admin_email');
             $user->password = Hash::make(config('admin.admin_password'));
+            $user->isAdminUser = true;
             $user->save();
         }
     }

@@ -33,7 +33,7 @@ class TaskController extends Controller
         ]);
 
         return redirect()
-            ->route('tasks')
+            ->back()
             ->with("task-added", "'$task->name' created successfully.");
     }
 
@@ -44,7 +44,7 @@ class TaskController extends Controller
         Task::destroy($request->id);
 
         return redirect()
-            ->route('tasks')
+            ->back()
             ->with("task-deleted", "'$task->name' deleted successfully.");
     }
 
@@ -68,7 +68,7 @@ class TaskController extends Controller
         $task->save();
 
         return redirect()
-            ->route('tasks')
+            ->back()
             ->with('task-finished', "'$task->name' finished successfully.");
     }
 

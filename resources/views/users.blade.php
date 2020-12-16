@@ -3,14 +3,21 @@
 @section('content')
 @include('template.alerts')
 
-<form action="{{route('store-user')}}" method="POST" class="my-3">
+<form action="{{route('store-user')}}" method="POST" class="my-4">
     @csrf
     <div class="row">
+
+        <div class="col my-2 d-flex align-items-center">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="isAdmin" name="isAdmin" value="true">
+                <label class="form-check-label" for="isAdmin">Is admin user.</label>
+            </div>
+        </div>
         <div class="col-lg-3 my-2">
             <input type="text" value="{{old('username')}}" class="form-control" placeholder="Username" aria-label="Username" name="username" id="username">
         </div>
 
-        <div class="col-lg-5 my-2">
+        <div class="col-lg-3 my-2">
             <input type="email" value="{{old('email')}}" class="form-control" placeholder="Email" aria-label="Email" name="email" id="email">
         </div>
 
@@ -24,7 +31,7 @@
         </div>
 
     </div>
-    
+
 </form>
 
 <hr>
@@ -37,7 +44,7 @@
         <div class="row d-flex align-items-center">
 
             <div class="col-lg-6">
-                <strong> {{($user->name)}} </strong> : {{$user->email}}
+                <strong> {{($user->name)}} </strong> : <a href="mailto:{{$user->email}}">{{$user->email}}</a>  <i> {{$user->isAdminUser ? "(Admin user.)"  : ''}} </i>
             </div>
 
             <div class="col-lg-6">
@@ -47,6 +54,9 @@
                     <input type="hidden" value="{{$user->id}}" name="id">
                     <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                 </form>
+                <div class="float-end">
+                    <button type="button" class="btn btn-primary btn-sm me-2" id="editBtn" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                </div>
             </div>
 
         </div>

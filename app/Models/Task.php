@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     protected $table = 'tasks';
-    protected $fillable = ['name', 'user_id', 'dueDate'];
+    protected $fillable = ['name', 'user_id', 'dueDate', 'finishedOn'];
     use HasFactory;
 
     public function user()
@@ -19,7 +19,16 @@ class Task extends Model
 
     public function getFormatedDueDate()
     {
-         $dueDate = $this->attributes['dueDate'];
-         return Carbon::parse($dueDate)->format('d/m/Y @ H:i');
+        $dueDate = $this->attributes['dueDate'];
+        return Carbon::parse($dueDate)->format('d/m/Y @ H:i');
+    }
+
+    public function getFormatedFinishingDate()
+    {
+        $finishingDate = $this->attributes['finishedOn'];
+
+        if ($finishingDate) {
+            return Carbon::parse($finishingDate)->format('d/m/Y @ H:i');
+        }
     }
 }
