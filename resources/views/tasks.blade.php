@@ -6,9 +6,10 @@
 @include('template.alerts')
 @endif
 
+@if(Auth()->user()->isAdminUser)
 @include('task-edit')
 
-<form action="{{route('store-task')}}" method="POST" class="my-4">
+<form action="{{route('store-task')}}" method="POST" class="mt-4">
     @csrf
     <div class="row">
 
@@ -48,6 +49,8 @@
 
 <hr>
 
+@endif
+
 @include('tasks-search')
 
 <ul class="list-group my-3">
@@ -80,6 +83,7 @@
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end">
                         @if(!$task->getFormatedFinishingDate())
+                        @if(Auth()->user()->isAdminUser || Auth()->user()->id == $task->user_id)
                         <form class="me-2" action="{{route('finish-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to finish this task?')">
                             @method('PUT')
                             @csrf
@@ -87,15 +91,21 @@
 
                             <button class="btn btn-success btn-sm" type="submit">Finish</button>
                         </form>
+                        @endif
 
+                        @if(Auth()->user()->isAdminUser)
                         <button type="button" class="btn btn-primary btn-sm me-2" id="editBtn" data-bs-toggle="modal" data-bs-target="#editModal" data-task="{{$task->name}}" data-date="{{$task->dueDate}}" data-user="{{$task->user->id}}" data-taskId="{{$task->id}}">Edit</button>
-                        @endif()
+                        @endif
+
+                        @endif
+                        @if(Auth()->user()->isAdminUser)
                         <form action="{{route('destroy-task')}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
                             @method('DELETE')
                             @csrf
                             <input type="hidden" value="{{$task->id}}" name="id">
                             <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                         </form>
+                        @endif
                     </div>
 
 

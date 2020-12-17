@@ -1,4 +1,4 @@
-<div class="row my-2">
+<div class="row my-4">
 
     <div class="accordion" id="accordion">
 

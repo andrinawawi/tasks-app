@@ -1,3 +1,26 @@
+@if(session('user-added'))
+<div class="alert alert-primary p-2 my-4 d-flex align-items-center">
+    <svg class="bi mx-2 my-auto" width="24" height="24" fill="currentColor">
+        <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#person-plus-fill')}}" />
+    </svg> {{session('user-added')}}</div>
+@endif
+
+@if(session('user-deleted'))
+<div class="alert alert-dark p-2 my-4 d-flex align-items-center">
+<svg class="bi mx-2" width="24" height="24" fill="currentColor">
+        <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#person-dash-fill')}}" />
+    </svg>
+{{session('user-deleted')}}</div>
+@endif
+
+@if(session('user-updated'))
+<div class="alert alert-success p-2 my-4 d-flex align-items-center">
+<svg class="bi mx-2" width="24" height="24" fill="currentColor">
+        <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#arrow-repeat')}}" />
+    </svg>
+{{session('user-updated')}}</div>
+@endif
+
 @if(session('task-added'))
 <div class="alert alert-primary p-2 my-4 d-flex align-items-center">
     <svg class="bi mx-2 my-auto" width="24" height="24" fill="currentColor">

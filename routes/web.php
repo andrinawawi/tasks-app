@@ -46,3 +46,4 @@ Route::get('/reports', [ReportController::class, 'index'])->name('reports');
 Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::post('/users', [UserController::class, 'store'])->name('store-user');
 Route::delete('/users', [UserController::class, 'destroy'])->name('destroy-user');
+Route::patch('/users', [USerController::class, 'update'])->name('update-user');
