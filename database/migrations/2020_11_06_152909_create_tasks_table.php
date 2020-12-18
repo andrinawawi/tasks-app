@@ -17,8 +17,8 @@ class CreateTasksTable extends Migration
             $table->smallIncrements('id');
             $table->string('name', 100);
             $table->unsignedSmallInteger('user_id');
-            $table->dateTime('dueDate', 0);
-            $table->dateTime('finishedOn')->nullable();
+            $table->dateTime('dueDate');
+            $table->dateTime('finishedOn')->nullable()->default(null);
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

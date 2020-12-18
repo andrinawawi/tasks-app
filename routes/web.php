@@ -42,6 +42,7 @@ Route::patch('/tasks', [TaskController::class, 'update'])->name('update-task');
 Route::put('/tasks', [TaskController::class, 'finish'])->name('finish-task');
 
 Route::get('/reports', [ReportController::class, 'index'])->name('reports');
+Route::get('/reports/filter', [ReportController::class, 'filter'])->name('filter-report');
 
 Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::post('/users', [UserController::class, 'store'])->name('store-user');

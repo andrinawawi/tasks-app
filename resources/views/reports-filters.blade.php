@@ -6,17 +6,18 @@
 
             <div class="card-header" id="heading-search">
                 <h2 class="mb-0">
-                    <button class="btn w-100 d-flex justify-content-between align-items-center link-dark btn-block"
+                    <button class="btn btn-link w-100 d-flex justify-content-between align-items-center link-dark btn-block"
                             type="button"
                             data-bs-toggle="collapse" data-bs-target="#collapse-search" aria-expanded="true"
                             aria-controls="collapse-search">
 
-                        <span class="d-flex align-items-center text-decoration-none">
+                        <span class="d-flex align-items-center">
                             <svg class="bi me-2" width="1em" height="1em" fill="currentColor">
                                 <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#search')}}"/>
                             </svg>
-                            <span class="text-decoration-underline me-2"> Search </span> <span> {{Request::is('tasks') ? ' (Showing all pending tasks by Due Date)' : ' (Showing custom search)'}}</span>
+                            Filters
                         </span>
+
                         <svg class="bi" width="1em" height="1em" fill="currentColor">
                             <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#chevron-down')}}"/>
                         </svg>
@@ -28,7 +29,7 @@
                  data-bs-parent="#accordion">
                 <div class="card-body">
 
-                    <form method="GET" action="{{route('search-task')}}">
+                    <form method="GET" action="{{route('filter-report')}}">
 
                         <div class="row">
                             <div class="form-group col-lg-3">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Services\FIlterReport;
 
 class ReportController extends Controller
 {
@@ -10,8 +12,23 @@ class ReportController extends Controller
     {
         $this->middleware('auth');
     }
-    
-    public function index(){
-        return view('reports');
+
+    public function index()
+    {
+        $users = User::query()->get()->sortBy('name', SORT_FLAG_CASE | SORT_NATURAL);
+        return view('reports', compact('users'));
+    }
+
+    public function filter(Request $request)
+    {
+        $tasks = FilterReport::filter($request);
+        $users = User::query()->get()->sortBy('name', SORT_FLAG_CASE | SORT_NATURAL);
+
+        return view('reports')->with([
+            'tasks' => $tasks,
+            'users' => $users,
+            'collapseShow' => 'show',
+            'oldRequest' => $request
+        ]);
     }
 }

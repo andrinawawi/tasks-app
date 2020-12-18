@@ -31,4 +31,15 @@ class Task extends Model
             return Carbon::parse($finishingDate)->format('d/m/Y @ H:i');
         }
     }
+
+    public function isOverDue()
+    {
+        $dueDate = new Carbon($this->attributes['dueDate']);
+
+        if ($dueDate->lt(Carbon::now())) {
+            return true;
+        }
+
+        return false;
+    }
 }
