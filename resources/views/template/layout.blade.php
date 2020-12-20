@@ -20,7 +20,14 @@
 
 <div class="container">
     @yield('content')
+
+    <div class="container text-center fw-bold">
+       <div>PRE ALPHA</div>
+        <a href="https://github.com/murilomagalhaes/tasks-app" target="_blank">GITHUB</a>
+    </div>
 </div>
+
+
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 

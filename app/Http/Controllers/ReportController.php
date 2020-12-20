@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Services\FIlterReport;
+use App\Services\FilterReport;
 
 class ReportController extends Controller
 {

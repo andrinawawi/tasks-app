@@ -64,56 +64,44 @@
                         </div>
 
                         <div class="row mb-4">
-                            <div class="d-flex align-items-center">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="searchOrder"
-                                           id="inlineRadio2"
-                                           value="userName"
-                                    @if( isset($oldRequest) && $oldRequest->searchOrder == 'userName')
-                                        {{'checked'}}
-                                        @endif >
-                                    <label class="form-check-label" for="inlineRadio2">Order by User</label>
-                                </div>
 
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="searchOrder"
-                                           id="inlineRadio1"
-                                           value="dueDate"
-                                    @if( isset($oldRequest) && $oldRequest->searchOrder == 'dueDate')
-                                        {{'checked'}}
-                                        @endif >
-                                    <label class="form-check-label" for="inlineRadio1">Order by Due date</label>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="row d-flex align-items-center">
 
                             <div class="col-md-9">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="finished" name="finished"
-                                    @if( isset($oldRequest) && $oldRequest->finished == 'on')
-                                        {{'checked'}}
-                                        @endif >
-                                    <label for="finished">Show finished tasks</label>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="searchOrder"
+                                               id="inlineRadio2"
+                                               value="userName"
+                                        @if( isset($oldRequest) && $oldRequest->searchOrder == 'userName')
+                                            {{'checked'}}
+                                            @endif >
+                                        <label class="form-check-label" for="inlineRadio2">Order by User</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="searchOrder"
+                                               id="inlineRadio1"
+                                               value="dueDate"
+                                        @if( isset($oldRequest) && $oldRequest->searchOrder == 'dueDate')
+                                            {{'checked'}}
+                                            @endif >
+                                        <label class="form-check-label" for="inlineRadio1">Order by Due date</label>
+                                    </div>
                                 </div>
+
                             </div>
 
                             <div class="col-md-3">
                                 <div class="d-flex float-end mt-4 mt-sm-0">
-                                    <a class="btn btn-sm btn-outline-dark d-flex align-items-center me-2"
-                                       href="{{route('tasks')}}">
-                                        <svg class="bi mx-1" width="1em" height="1em" fill="currentColor">
-                                            <use
-                                                xlink:href="{{asset('dist/icons/bootstrap-icons.svg#arrow-clockwise')}}"/>
-                                        </svg>
-                                    </a>
-
                                     <button class="btn btn-sm btn-outline-primary d-flex align-items-center">
                                         <svg class="bi me-2" width="1em" height="1em" fill="currentColor">
-                                            <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#search')}}"/>
+                                            <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#file-text')}}"/>
                                         </svg>
-                                        Search
+                                        View report
                                     </button>
                                 </div>
                             </div>
