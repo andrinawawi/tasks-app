@@ -57,7 +57,8 @@
 
     @foreach($tasks as $task)
 
-    <li class="list-group-item">
+    <li class="list-group-item list-group-item-action {{$task->getFormatedFinishingDate() ? 'list-group-item-success' : ''}}
+        {{!$task->getFormatedFinishingDate() && $task->isOverDue() ? 'list-group-item-danger' : ''}}" >
         <div class="row d-flex align-items-center p-1">
 
             <div class="col-lg-6">
@@ -65,7 +66,7 @@
                     <span class="col-12"><strong class="{{($task->getFormatedFinishingDate()) ? 'text-success' : ''}}"> @php echo ucfirst($task->user->name) @endphp</strong> :
                         @if(!empty($task->getFormatedFinishingDate()))
                         <i class="text-success">Finished on {{$task->getFormatedFinishingDate()}}</i>
-                        @endif</span>
+                        @endif {{!$task->getFormatedFinishingDate() && $task->isOverDue() ? 'Overdue!' : ''}}</span>
                 </div>
 
                 <div class="row">

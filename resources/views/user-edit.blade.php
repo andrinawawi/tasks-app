@@ -17,7 +17,7 @@
                     @csrf
                     @method('PATCH')
                     <div class="form-group mb-3">
-                        <label for="updName">Uusername</label>
+                        <label for="updName">Username</label>
                         <input class="form-control" type="text" name="updName" id="updName" value="{{old('updName')}}" required>
                     </div>
 

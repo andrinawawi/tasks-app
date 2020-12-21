@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Self_;
 
 class Task extends Model
 {
@@ -36,10 +37,22 @@ class Task extends Model
     {
         $dueDate = new Carbon($this->attributes['dueDate']);
 
-        if ($dueDate->lt(Carbon::now())) {
+        if ($dueDate->lt(Carbon::now()) && !$this->attributes['finishedOn']) {
             return true;
         }
 
         return false;
     }
+
+    public function isPending()
+    {
+        $dueDate = new Carbon($this->attributes['dueDate']);
+
+        if ($dueDate->gt(Carbon::now()) && !$this->attributes['finishedOn']) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

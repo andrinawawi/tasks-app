@@ -25,10 +25,11 @@ class ReportController extends Controller
         $users = User::query()->get()->sortBy('name', SORT_FLAG_CASE | SORT_NATURAL);
 
         return view('reports')->with([
-            'tasks' => $tasks,
+            'tasks' => $tasks['tasks'],
             'users' => $users,
             'collapseShow' => 'show',
-            'oldRequest' => $request
+            'oldRequest' => $request,
+            'count' => $tasks['count']
         ]);
     }
 }

@@ -21,7 +21,7 @@
 <div class="container">
     @yield('content')
 
-    <div class="container text-center fw-bold">
+    <div class="container text-center fw-bold my-4">
        <div>PRE ALPHA</div>
         <a href="https://github.com/murilomagalhaes/tasks-app" target="_blank">GITHUB</a>
     </div>
