@@ -67,10 +67,10 @@
                                 <span>Finishing Date</span>
                                 <div class="border border-2 rounded p-3">
                                     <label for="finishingDateFrom">From</label>
-                                    <input value="{{ $oldRequest->dueDateSearch ?? ''}}" type="date" name="finishingDateFrom" class="form-control mb-4" id="finishingDateFrom">
+                                    <input value="{{ $oldRequest->finishingDateFrom ?? ''}}" type="date" name="finishingDateFrom" class="form-control mb-4" id="finishingDateFrom">
 
                                     <label for="dueDateSearch">Until</label>
-                                    <input value="{{ $oldRequest->dueDateSearch ?? ''}}" type="date" name="finishingDateUntil" class="form-control mb-4" id="finishingDateUntil">
+                                    <input value="{{ $oldRequest->finishingDateUntil ?? ''}}" type="date" name="finishingDateUntil" class="form-control mb-4" id="finishingDateUntil">
                                 </div>
                             </div>
 
@@ -88,7 +88,7 @@
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="searchOrder" id="inlineRadio2" value="userName" @if( isset($oldRequest) && $oldRequest->searchOrder == 'taskName')
+                                            <input class="form-check-input" type="radio" name="searchOrder" id="inlineRadio2" value="tasks.name" @if( isset($oldRequest) && $oldRequest->searchOrder == 'tasks.name')
                                             {{'checked'}}
                                             @endif >
                                             <label class="form-check-label" for="inlineRadio2">Order by Task name</label>
@@ -102,17 +102,15 @@
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="searchOrder" id="inlineRadio4" value="finishingDate" @if( isset($oldRequest) && $oldRequest->searchOrder == 'finishingDate')
+                                            <input class="form-check-input" type="radio" name="searchOrder" id="inlineRadio4" value="finishiedOn" @if( isset($oldRequest) && $oldRequest->searchOrder == 'finishingDate')
                                             {{'checked'}}
                                             @endif >
                                             <label class="form-check-label" for="inlineRadio4">Order by Finishing Date</label>
                                         </div>
                                     </div>
 
-                                    <hr>
-
-                                    <div class="float-end mt-1 mb-0">
-                                        <button class="btn btn-sm btn-outline-primary d-flex align-items-center">
+                                    <div class="float-end mt-4">
+                                        <button class="btn btn-outline-primary d-flex align-items-center">
                                             <svg class="bi me-2" width="1em" height="1em" fill="currentColor">
                                                 <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#file-text')}}" />
                                             </svg>
