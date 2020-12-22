@@ -7,9 +7,8 @@
 
  - User profiles and authentication
  - User based tasks
- - Due dates
- - Various Task search filters 
- - Reports (To be implemented.)
+ - Due and finishing dates
+ - Reports
 
 ## Screenshots:
 

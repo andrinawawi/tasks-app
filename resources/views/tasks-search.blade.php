@@ -15,7 +15,8 @@
                             <svg class="bi me-2" width="1em" height="1em" fill="currentColor">
                                 <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#search')}}"/>
                             </svg>
-                            <span class="text-decoration-underline me-2"> Search </span> <span> {{Request::is('tasks') ? ' (Showing all pending tasks by Due Date)' : ' (Showing custom search)'}}</span>
+                            <span
+                                class="text-decoration-underline me-2"> Search </span> <span> {{Request::is('tasks') ? ' (Showing all pending tasks by Due Date)' : ' (Showing custom search)'}}</span>
                         </span>
                         <svg class="bi" width="1em" height="1em" fill="currentColor">
                             <use xlink:href="{{asset('dist/icons/bootstrap-icons.svg#chevron-down')}}"/>
