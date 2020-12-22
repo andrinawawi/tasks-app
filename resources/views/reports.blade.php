@@ -6,7 +6,7 @@
 
     <hr>
 
-    @if(isset($tasks))
+    @if(isset($tasks) && !session('filter-failed'))
 
         <div class="row">
             @if($count['total'] == 0)
@@ -65,11 +65,11 @@
 
     <script>
         document.getElementById('clear-filters').addEventListener('click', function () {
-            document.getElementById('dueDateFrom').setAttribute('value', '');
-            document.getElementById('dueDateUntil').setAttribute('value', '');
-            document.getElementById('taskSearch').setAttribute('value', '');
-            document.getElementById('finishingDateFrom').setAttribute('value', '');
-            document.getElementById('finishingDateUntil').setAttribute('value', '');
+            document.getElementById('dueDateFrom').value="";
+            document.getElementById('dueDateUntil').value="";
+            document.getElementById('taskSearch').value="";
+            document.getElementById('finishingDateFrom').value="";
+            document.getElementById('finishingDateUntil').value="";
             document.getElementById('inlineRadio1').checked = false;
             document.getElementById('inlineRadio2').checked = false;
             document.getElementById('inlineRadio3').checked = false;
