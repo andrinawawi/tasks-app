@@ -2,6 +2,10 @@
 
 **TasksApp** is a minimalist web application built with PHP/Laravel for tasks management. 
 
+[Demo](http://tasksapp.murilomagalhaes.tech/)
+User: admin
+Password: admin
+
 
 ## Features:
 
