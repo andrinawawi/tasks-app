@@ -78,8 +78,6 @@
                             <div class="form-group col-lg-4 mb-4">
                                 <span>Oder by (Asc.)</span>
 
-                                {{$oldRequest->searchOrder}}
-
                                 <div class="border border-2 founded p-3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="searchOrder" id="inlineRadio1" value="userName" @if( old('searchOrder') == 'userName')
